@@ -1,9 +1,12 @@
 import React from "react";
-import { Form, Icon, Input, Button } from "antd";
-import { withFormik, FormikErrors, FormikProps } from "formik";
+import * as Antd from "antd";
+import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
 import { validUserSchema } from "@airbnbclone/helpers";
 
 import "./RegisterView.css";
+import { InputField } from "../../share/InputField";
+
+const { Form: AntForm, Icon, Button } = Antd;
 
 interface FormValues {
   email: string;
@@ -18,14 +21,6 @@ class RegisterView extends React.PureComponent<
   FormikProps<FormValues> & Props
 > {
   render() {
-    const {
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      values,
-      touched,
-      errors
-    } = this.props;
     return (
       <div
         style={{
@@ -36,52 +31,29 @@ class RegisterView extends React.PureComponent<
           justifyContent: "center"
         }}
       >
-        <form className="login-form" onSubmit={handleSubmit}>
+        <Form className="login-form">
           <h1>Register</h1>
-          <Form.Item
-            style={{ width: "100%" }}
-            help={touched.email && errors.email ? errors.email : ""}
-            hasFeedback
-            validateStatus={touched.email && errors.email ? "error" : undefined}
-          >
-            <Input
-              name="email"
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Email"
-              size="large"
-              style={{
-                width: "100%"
-              }}
-              onChange={handleChange}
-              value={values.email}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
-            style={{ width: "100%" }}
-            help={touched.password && errors.password ? errors.password : ""}
-            hasFeedback
-            validateStatus={
-              touched.password && errors.password ? "error" : undefined
+          <Field
+            name="email"
+            prefix={
+              <Icon type="user" style={{ color: "rgba(0, 0, 0, .25)" }} />
             }
-          >
-            <Input
-              name="password"
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="password"
-              placeholder="Password"
-              size="large"
-              onChange={handleChange}
-              value={values.password}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item style={{ marginBottom: "0" }}>
+            placeholder="Email"
+            component={InputField}
+          />
+          <Field
+            name="password"
+            type="password"
+            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+            placeholder="Password"
+            component={InputField}
+          />
+          <AntForm.Item style={{ marginBottom: "0" }}>
             <a className="login-form-forgot" href="/forgot-password">
               Forgot password
             </a>
-          </Form.Item>
-          <Form.Item style={{ marginBottom: "0" }}>
+          </AntForm.Item>
+          <AntForm.Item style={{ marginBottom: "0" }}>
             <Button
               type="primary"
               htmlType="submit"
@@ -89,11 +61,11 @@ class RegisterView extends React.PureComponent<
             >
               Register
             </Button>
-          </Form.Item>
-          <Form.Item>
+          </AntForm.Item>
+          <AntForm.Item>
             Or <a href="/login">login now!</a>
-          </Form.Item>
-        </form>
+          </AntForm.Item>
+        </Form>
       </div>
     );
   }
