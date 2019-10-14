@@ -1,4 +1,6 @@
 import React from "react";
+import { RegisterController } from "@airbnbclone/controllers";
+
 import { RegisterViewHigherComponent } from "./ux/RegisterView";
 
 /**
@@ -10,11 +12,11 @@ import { RegisterViewHigherComponent } from "./ux/RegisterView";
  */
 
 export class RegisterConnector extends React.PureComponent {
-  mockSubmit = async (values: any) => {
-    console.log(values);
-    return null;
-  };
   render() {
-    return <RegisterViewHigherComponent submit={this.mockSubmit} />;
+    return (
+      <RegisterController>
+        {({ submit }) => <RegisterViewHigherComponent submit={submit} />}
+      </RegisterController>
+    );
   }
 }
