@@ -50,7 +50,7 @@ class RegisterView extends React.PureComponent<
           />
           <AntForm.Item style={{ marginBottom: "0" }}>
             <a className="login-form-forgot" href="/forgot-password">
-              Forgot password
+              Forgot password?
             </a>
           </AntForm.Item>
           <AntForm.Item style={{ marginBottom: "0" }}>
