@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Icon, Input, Button } from "antd";
 import { withFormik, FormikErrors, FormikProps } from "formik";
+import * as yup from "yup";
 
 import "./RegisterView.css";
 
@@ -17,7 +18,14 @@ class RegisterView extends React.PureComponent<
   FormikProps<FormValues> & Props
 > {
   render() {
-    const { handleChange, handleBlur, handleSubmit, values } = this.props;
+    const {
+      handleChange,
+      handleBlur,
+      handleSubmit,
+      values,
+      touched,
+      errors
+    } = this.props;
     return (
       <div
         style={{
@@ -29,7 +37,13 @@ class RegisterView extends React.PureComponent<
         }}
       >
         <form className="login-form" onSubmit={handleSubmit}>
-          <Form.Item style={{ width: "100%" }}>
+          <h1>Register</h1>
+          <Form.Item
+            style={{ width: "100%" }}
+            help={touched.email && errors.email ? errors.email : ""}
+            hasFeedback
+            validateStatus={touched.email && errors.email ? "error" : undefined}
+          >
             <Input
               name="email"
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -43,7 +57,14 @@ class RegisterView extends React.PureComponent<
               onBlur={handleBlur}
             />
           </Form.Item>
-          <Form.Item style={{ width: "100%" }}>
+          <Form.Item
+            style={{ width: "100%" }}
+            help={touched.password && errors.password ? errors.password : ""}
+            hasFeedback
+            validateStatus={
+              touched.password && errors.password ? "error" : undefined
+            }
+          >
             <Input
               name="password"
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
@@ -55,12 +76,12 @@ class RegisterView extends React.PureComponent<
               onBlur={handleBlur}
             />
           </Form.Item>
-          <Form.Item>
+          <Form.Item style={{ marginBottom: "0" }}>
             <a className="login-form-forgot" href="/forgot-password">
               Forgot password
             </a>
           </Form.Item>
-          <Form.Item>
+          <Form.Item style={{ marginBottom: "0" }}>
             <Button
               type="primary"
               htmlType="submit"
@@ -78,7 +99,29 @@ class RegisterView extends React.PureComponent<
   }
 }
 
+// const duplicateEmail = "already taken";
+const emailNotLongEnough = "email must be at least 3 characters";
+const passwordNotLongEnough = "password must be at least 6 characters";
+const invalidEmail = "email must be a valid email";
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .min(3, emailNotLongEnough)
+    .max(255)
+    .email(invalidEmail)
+    .required(),
+  password: yup
+    .string()
+    .min(6, passwordNotLongEnough)
+    .max(255)
+    .required()
+});
+
 export const RegisterViewHigherComponent = withFormik<Props, FormValues>({
+  validationSchema,
+  validateOnChange: false,
+  validateOnBlur: false,
   mapPropsToValues: () => ({ email: "", password: "" }),
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
