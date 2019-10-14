@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Icon, Input, Button } from "antd";
 import { withFormik, FormikErrors, FormikProps } from "formik";
-import * as yup from "yup";
+import { validUserSchema } from "@airbnbclone/helpers";
 
 import "./RegisterView.css";
 
@@ -99,27 +99,8 @@ class RegisterView extends React.PureComponent<
   }
 }
 
-// const duplicateEmail = "already taken";
-const emailNotLongEnough = "email must be at least 3 characters";
-const passwordNotLongEnough = "password must be at least 6 characters";
-const invalidEmail = "email must be a valid email";
-
-const validationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .min(3, emailNotLongEnough)
-    .max(255)
-    .email(invalidEmail)
-    .required(),
-  password: yup
-    .string()
-    .min(6, passwordNotLongEnough)
-    .max(255)
-    .required()
-});
-
 export const RegisterViewHigherComponent = withFormik<Props, FormValues>({
-  validationSchema,
+  validationSchema: validUserSchema,
   validateOnChange: false,
   validateOnBlur: false,
   mapPropsToValues: () => ({ email: "", password: "" }),

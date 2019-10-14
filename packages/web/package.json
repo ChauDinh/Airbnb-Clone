@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@airbnbclone/web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "typescript": "3.6.4",
-    "yup": "^0.27.0"
+    "yup": "^0.27.0",
+    "@airbnbclone/helpers": "1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
