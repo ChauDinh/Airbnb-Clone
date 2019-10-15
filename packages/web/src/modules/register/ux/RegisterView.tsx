@@ -73,8 +73,8 @@ class RegisterView extends React.PureComponent<
 
 export const RegisterViewHigherComponent = withFormik<Props, FormValues>({
   validationSchema: validUserSchema,
-  validateOnChange: false,
-  validateOnBlur: false,
+  // validateOnChange: false,
+  // validateOnBlur: false,
   mapPropsToValues: () => ({ email: "", password: "" }),
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);

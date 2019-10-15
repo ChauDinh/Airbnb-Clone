@@ -25,7 +25,7 @@ afterAll(async () => {
   conn.close();
 });
 
-describe("Register user", async () => {
+describe("Register user", () => {
   it("check for duplicate emails", async () => {
     // make sure we can register a user
     const response = await client.register(email, password);

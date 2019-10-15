@@ -8,7 +8,10 @@
     "build": "rm -rf dist && tsc"
   },
   "dependencies": {
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
     "react": "^16.10.2",
+    "react-apollo": "^2.1.6",
     "react-dom": "^16.10.2"
   },
   "devDependencies": {

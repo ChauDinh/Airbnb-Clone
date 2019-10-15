@@ -15,7 +15,9 @@ export class RegisterConnector extends React.PureComponent {
   render() {
     return (
       <RegisterController>
-        {({ submit }) => <RegisterViewHigherComponent submit={submit} />}
+        {({ submit }: { submit: any }) => (
+          <RegisterViewHigherComponent submit={submit} />
+        )}
       </RegisterController>
     );
   }

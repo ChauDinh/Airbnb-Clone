@@ -1,6 +1,15 @@
 {
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/jest",
+      "**/graphql",
+      "**/apollo-server-express",
+      "**/apollo-server-core",
+      "**/graphql-yoga"
+    ]
+  }
 }
