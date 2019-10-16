@@ -22,17 +22,9 @@ class RegisterView extends React.PureComponent<
 > {
   render() {
     return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
+      <div className="wrapper">
         <Form className="login-form">
-          <h1>Register</h1>
+          <h1 className="register-title">Create Account</h1>
           <Field
             name="email"
             prefix={

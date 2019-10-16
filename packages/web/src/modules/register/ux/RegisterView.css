@@ -1,7 +1,50 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url(https://images.pexels.com/photos/91413/pexels-photo-91413.jpeg?cs=srgb&dl=blue-bulbs-light-bulbs-91413.jpg&fm=jpg)
+    lightblue;
+  background-size: cover;
+  background-position-y: top;
+  overflow: hidden;
+}
+
 .login-form {
   width: 400px;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 3rem 1rem;
+  background: #fff;
+}
+
+.register-title {
+  color: #0b3f50;
+  text-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.login-form-button {
+  background: #0b3f50 !important;
+  border: none !important;
+  text-transform: uppercase;
+  color: #fff !important;
+}
+
+a {
+  text-decoration: underline !important;
+  color: #0b3f50 !important;
+}
+
+input {
+  font-size: 1.4rem !important;
+  font-weight: 300;
+  padding: 1rem 2.5rem !important;
 }
