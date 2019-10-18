@@ -4,8 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url(https://images.pexels.com/photos/91413/pexels-photo-91413.jpeg?cs=srgb&dl=blue-bulbs-light-bulbs-91413.jpg&fm=jpg)
-    lightblue;
+	background: #0b3f50;
   background-size: cover;
   background-position-y: top;
   overflow: hidden;
@@ -44,7 +43,7 @@ a {
 }
 
 input {
-  font-size: 1.4rem !important;
+  font-size: 1.2rem !important;
   font-weight: 300;
   padding: 1rem 2.5rem !important;
 }
