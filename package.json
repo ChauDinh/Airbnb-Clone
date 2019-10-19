@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "build:server": "lerna run build --scope={@airbnbclone/helpers,@airbnbclone/server}"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
@@ -11,5 +14,9 @@
       "**/apollo-server-core",
       "**/graphql-yoga"
     ]
+  },
+  "name": "airbnbclone",
+  "devDependencies": {
+    "lerna": "^3.18.1"
   }
 }
